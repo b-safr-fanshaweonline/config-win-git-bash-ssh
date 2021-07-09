@@ -1,4 +1,4 @@
-# gitbashssh
+# Easy Windows Git Bash SSH Configuration
 
 Easy Windows SSH Git Bash Setup
 
