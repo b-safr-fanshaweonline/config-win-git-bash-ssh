@@ -1,6 +1,4 @@
-# Easy Windows Git Bash SSH Configuration
-
-Easy Windows SSH Git Bash Setup
+# Easy Git Bash SSH Configuration
 
 `git clone` and copy contents to home folder
 
