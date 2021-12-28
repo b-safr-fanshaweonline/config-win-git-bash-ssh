@@ -1,38 +1,54 @@
-# Easy Git Bash SSH Configuration
+# Configure Windows Git Bash With SSH
 
-`git clone` and copy contents to home folder
+## Create a new SSH key
+
+[Generating a new SSH key and adding it to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-windows)
+
+### Generate Key
 
 ```
 ssh-keygen -t ed25519 -C "your_email@example.com"
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
+```
+Note: If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
-# Setup SSH Authentication for Git Bash on Windows
+### Save Key
 
-## Prepararation
+```
+> Generating public/private algorithm key pair.
+```
+```
+> Enter a file in which to save the key (/c/Users/you/.ssh/id_algorithm):[Press enter]
+```
+```
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+## Test
 
-0. Create a folder at the root of your user home folder
-   (Example: `C:/Users/uname/`) called `.ssh`.
-1. Create the following files if they do not already
-   exist (paths begin from the root of your user home
-   folder):
-    - `.ssh/config`
-    - `.bash_profile`
-    - `.bashrc`
+```
+# start the ssh-agent in the background
+$ eval "$(ssh-agent -s)"
+> Agent pid 59566
+```
+```
+$ ssh-add ~/.ssh/id_ed25519
+```
 
+## Add to GitHub Account
 
-## Create a New SSH Key
+Add the SSH key to your account on GitHub. For more information, see "[Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)".
 
-Follow the steps in the section named "Generating a new SSH
-Key" found in the following documentation from GitHub:
-*[Generating a new SSH key and adding it to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-windows)*
+## Automate
 
+Copy to your home folder (C:\Users\you\):
+- `.ssh/config`
+- `.bash_profile`
+- `.bashrc`
 
-## Configure SSH for Git Hosting Server
-
-Add the following text to `.ssh/config` (`.ssh` should be found
-in the root of your user home folder):
+### `.ssh/config`
 
 ```
 Host github.com
@@ -40,19 +56,14 @@ Host github.com
  IdentityFile ~/.ssh/id_ed25519
 ```
 
-
-## Enable SSH Agent Startup Whenever Git Bash is Started
-
-First, ensure that following lines are added to `.bash_profile`,
-which should be found in your root user home folder:
+### `.bash_profile`
 
 ```sh
 test -f ~/.profile && . ~/.profile
 test -f ~/.bashrc && . ~/.bashrc
 ```
 
-Now, add the following text to `.bashrc`, which should be found
-in your root user home folder:
+### `.bashrc`
 
 ```sh
 # Start SSH Agent
