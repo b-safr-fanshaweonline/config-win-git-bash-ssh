@@ -66,7 +66,7 @@ file:///C:/Users/you/.ssh/id_ed25519
 [SSH keys / Add new](https://github.com/settings/ssh/new)
 
 [
-![](https://docs.github.com/assets/cb-24835/images/help/settings/ssh-key-paste.png)
+  ![](https://docs.github.com/assets/cb-24835/images/help/settings/ssh-key-paste.png)
 ](https://github.com/settings/ssh/new)
 
 ## 3. Automate
@@ -77,8 +77,8 @@ file:///C:/Users/you/.ssh/id_ed25519
 
 ```
 Host github.com
- Hostname github.com
- IdentityFile ~/.ssh/id_ed25519
+  Hostname github.com
+  IdentityFile ~/.ssh/id_ed25519
 ```
 
 ### `.bash_profile`
@@ -97,8 +97,8 @@ env=~/.ssh/agent.env
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
 
 agent_start () {
-    (umask 077; ssh-agent >| "$env")
-    . "$env" >| /dev/null ; }
+  (umask 077; ssh-agent >| "$env")
+  . "$env" >| /dev/null ; }
 
 agent_load_env
 
@@ -106,10 +106,10 @@ agent_load_env
 agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
 
 if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
-    agent_start
-    ssh-add
+  agent_start
+  ssh-add
 elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-    ssh-add
+  ssh-add
 fi
 
 unset env
