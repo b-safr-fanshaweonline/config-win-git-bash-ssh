@@ -1,10 +1,10 @@
 # Configure Windows Git Bash With SSH
 
-## Create a new SSH key
+## 1.Create a new SSH key
 
 [Generating a new SSH key and adding it to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-windows)
 
-### Generate Key
+### 1.1 Generate Key
 
 ```
 ssh-keygen -t ed25519 -C "your_email@example.com"
@@ -14,7 +14,7 @@ Note: If you are using a legacy system that doesn't support the Ed25519 algorith
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
-### Save Key
+### 1.2 Save Key
 
 ```
 > Generating public/private algorithm key pair.
@@ -26,7 +26,8 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 > Enter passphrase (empty for no passphrase): [Type a passphrase]
 > Enter same passphrase again: [Type passphrase again]
 ```
-## Test
+
+### 1.3 Test
 
 ```
 # start the ssh-agent in the background
@@ -37,11 +38,27 @@ $ eval "$(ssh-agent -s)"
 $ ssh-add ~/.ssh/id_ed25519
 ```
 
-## Add to GitHub Account
+## 2. Add to GitHub Account
 
-Add the SSH key to your account on GitHub. For more information, see "[Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)".
+[Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-## Automate
+### 2.1 Copy key to clipboard
+
+```
+C:\Users\you\.ssh\id_ed25519
+```
+
+```
+file:///C:/Users/you/.ssh/id_ed25519
+```
+
+### 2.2 Add New Key
+
+[![](https://docs.github.com/assets/cb-24835/images/help/settings/ssh-key-paste.png)](https://github.com/settings/ssh/new)
+
+[SSH keys / Add new](https://github.com/settings/ssh/new)
+
+## 3. Automate
 
 Copy to your home folder (C:\Users\you\):
 - `.ssh/config`
@@ -59,7 +76,6 @@ Host github.com
 ### `.bash_profile`
 
 ```sh
-test -f ~/.profile && . ~/.profile
 test -f ~/.bashrc && . ~/.bashrc
 ```
 
@@ -95,3 +111,5 @@ else
   start_ssh_agent;
 fi
 ```
+
+[Working with SSH key passphrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)
