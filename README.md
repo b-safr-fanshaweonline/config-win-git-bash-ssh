@@ -1,6 +1,6 @@
 # Configure Windows Git Bash With SSH
 
-## 1.Create a new SSH key
+## 1. Create a new SSH key
 
 [Generating a new SSH key and adding it to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-windows)
 
@@ -65,7 +65,9 @@ file:///C:/Users/you/.ssh/id_ed25519
 
 [SSH keys / Add new](https://github.com/settings/ssh/new)
 
-[![](https://docs.github.com/assets/cb-24835/images/help/settings/ssh-key-paste.png)](https://github.com/settings/ssh/new)
+[
+![](https://docs.github.com/assets/cb-24835/images/help/settings/ssh-key-paste.png)
+](https://github.com/settings/ssh/new)
 
 ## 3. Automate
 
